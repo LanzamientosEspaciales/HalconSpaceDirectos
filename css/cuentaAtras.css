@@ -1,21 +1,187 @@
+@font-face {
+    font-family: 'Erbaum-Black-font';
+    src: url('../Fuentes/Erbaum-Black.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Erbaum-Medium-font';
+    src: url('../Fuentes/Erbaum-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Erbaum-Regular';
+    src: url('../Fuentes/Erbaum-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Erbaum-Medium-Thin';
+    src: url('../Fuentes/Erbaum-Thin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
-    font-family: 'Erbaum', sans-serif;
-    background-color: #1d1d1d;
+    font-family: 'Erbaum-Medium-font', sans-serif;
+    background-color: rgba(0, 0, 0, 0);
     color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    width: 1280px;
+    height: 720px;
     margin: 0;
 }
 
 .countdown-container {
     text-align: center;
-    font-size: 2em;
+    font-size: 2rem;
+    margin: 20px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;  /* Coloca los elementos en una columna */
+    gap: 10px;  /* Espacio entre los elementos, puedes ajustarlo */
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
 }
 
-.countdown {
-    font-size: 3em;
-    font-weight: bold;
-    color: #ff4500; /* Color de la cuenta regresiva */
+/* Animación de borde para .cancelado (rojo) */
+.cancelado, .abort, .anomalia {
+    border: 5px solid rgba(255, 0, 0, 0.4); /* Borde transparente inicial */
+    animation: borde-movimiento-rojo 3s linear infinite; /* Animación continua del borde */
+}
+
+/* Animación de borde para .hold (naranja) */
+.hold {
+    border: 5px solid rgba(255, 165, 0, 0.4); /* Borde naranja transparente inicial */
+    animation: borde-movimiento-naranja 3s linear infinite; /* Animación continua del borde */
+}
+
+/* Animación de borde para .evento-normal (verde) */
+.evento-normal, .exito {
+    border: 5px solid rgba(0, 128, 0, 0.4); /* Borde verde transparente inicial */
+    animation: borde-movimiento-verde 3s linear infinite; /* Animación continua del borde */
+}
+
+/* Nueva animación de borde en movimiento estilo "rayo" para rojo */
+@keyframes borde-movimiento-rojo {
+    0% {
+        border-top: 5px solid red;
+        border-right: 5px solid rgba(255, 0, 0, 0.4);
+        border-bottom: 5px solid rgba(255, 0, 0, 0.4);
+        border-left: 5px solid rgba(255, 0, 0, 0.4);
+    }
+    25% {
+        border-top: 5px solid rgba(255, 0, 0, 0.4);
+        border-right: 5px solid red;
+        border-bottom: 5px solid rgba(255, 0, 0, 0.4);
+        border-left: 5px solid rgba(255, 0, 0, 0.4);
+    }
+    50% {
+        border-top: 5px solid rgba(255, 0, 0, 0.4);
+        border-right: 5px solid rgba(255, 0, 0, 0.4);
+        border-bottom: 5px solid red;
+        border-left: 5px solid rgba(255, 0, 0, 0.4);
+    }
+    75% {
+        border-top: 5px solid rgba(255, 0, 0, 0.4);
+        border-right: 5px solid rgba(255, 0, 0, 0.4);
+        border-bottom: 5px solid rgba(255, 0, 0, 0.4);
+        border-left: 5px solid red;
+    }
+    100% {
+        border-top: 5px solid red;
+        border-right: 5px solid rgba(255, 0, 0, 0.4);
+        border-bottom: 5px solid rgba(255, 0, 0, 0.4);
+        border-left: 5px solid rgba(255, 0, 0, 0.4);
+    }
+}
+
+/* Nueva animación de borde en movimiento estilo "rayo" para naranja */
+@keyframes borde-movimiento-naranja {
+    0% {
+        border-top: 5px solid orange;
+        border-right: 5px solid rgba(255, 165, 0, 0.4);
+        border-bottom: 5px solid rgba(255, 165, 0, 0.4);
+        border-left: 5px solid rgba(255, 165, 0, 0.4);
+    }
+    25% {
+        border-top: 5px solid rgba(255, 165, 0, 0.4);
+        border-right: 5px solid orange;
+        border-bottom: 5px solid rgba(255, 165, 0, 0.4);
+        border-left: 5px solid rgba(255, 165, 0, 0.4);
+    }
+    50% {
+        border-top: 5px solid rgba(255, 165, 0, 0.4);
+        border-right: 5px solid rgba(255, 165, 0, 0.4);
+        border-bottom: 5px solid orange;
+        border-left: 5px solid rgba(255, 165, 0, 0.4);
+    }
+    75% {
+        border-top: 5px solid rgba(255, 165, 0, 0.4);
+        border-right: 5px solid rgba(255, 165, 0, 0.4);
+        border-bottom: 5px solid rgba(255, 165, 0, 0.4);
+        border-left: 5px solid orange;
+    }
+    100% {
+        border-top: 5px solid orange;
+        border-right: 5px solid rgba(255, 165, 0, 0.4);
+        border-bottom: 5px solid rgba(255, 165, 0, 0.4);
+        border-left: 5px solid rgba(255, 165, 0, 0.4);
+    }
+}
+
+/* Nueva animación de borde en movimiento estilo "rayo" para verde */
+@keyframes borde-movimiento-verde {
+    0% {
+        border-top: 5px solid green;
+        border-right: 5px solid rgba(0, 128, 0, 0.4);
+        border-bottom: 5px solid rgba(0, 128, 0, 0.4);
+        border-left: 5px solid rgba(0, 128, 0, 0.4);
+    }
+    25% {
+        border-top: 5px solid rgba(0, 128, 0, 0.4);
+        border-right: 5px solid green;
+        border-bottom: 5px solid rgba(0, 128, 0, 0.4);
+        border-left: 5px solid rgba(0, 128, 0, 0.4);
+    }
+    50% {
+        border-top: 5px solid rgba(0, 128, 0, 0.4);
+        border-right: 5px solid rgba(0, 128, 0, 0.4);
+        border-bottom: 5px solid green;
+        border-left: 5px solid rgba(0, 128, 0, 0.4);
+    }
+    75% {
+        border-top: 5px solid rgba(0, 128, 0, 0.4);
+        border-right: 5px solid rgba(0, 128, 0, 0.4);
+        border-bottom: 5px solid rgba(0, 128, 0, 0.4);
+        border-left: 5px solid green;
+    }
+    100% {
+        border-top: 5px solid green;
+        border-right: 5px solid rgba(0, 128, 0, 0.4);
+        border-bottom: 5px solid rgba(0, 128, 0, 0.4);
+        border-left: 5px solid rgba(0, 128, 0, 0.4);
+    }
+}
+
+
+#missionName {
+    font-family: 'Erbaum-Regular', sans-serif;
+    font-size: 15px;
+}
+
+#countdown {
+    font-family: 'Erbaum-Medium-font', sans-serif;
+    font-size: 18px;
 }
