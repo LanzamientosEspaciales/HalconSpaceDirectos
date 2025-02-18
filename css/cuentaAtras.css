@@ -1,0 +1,21 @@
+body {
+    font-family: 'Erbaum', sans-serif;
+    background-color: #1d1d1d;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.countdown-container {
+    text-align: center;
+    font-size: 2em;
+}
+
+.countdown {
+    font-size: 3em;
+    font-weight: bold;
+    color: #ff4500; /* Color de la cuenta regresiva */
+}
